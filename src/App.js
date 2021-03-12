@@ -41,7 +41,7 @@ class App extends Component {
     
   };
   componentDidMount() {
-    fetch('http://localhost:3000/gita.json', {
+    fetch('https://public-data-json.s3.ap-south-1.amazonaws.com/gita.json', {
       headers : { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
