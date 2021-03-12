@@ -10,27 +10,31 @@ import {
 } from "@material-ui/core";
 
 class App extends Component {
-  state = {
-    chapters: [],
-    settings: [{ num: "1", open: false },
-              { num: "2", open: false },
-              { num: "3", open: false }, 
-              { num: "4", open: false }, 
-              { num: "5", open: false }, 
-              { num: "6", open: false }, 
-              { num: "7", open: false },
-              { num: "8", open: false }, 
-              { num: "9", open: false }, 
-              { num: "10", open: false }, 
-              { num: "11", open: false },
-              { num: "12", open: false }, 
-              { num: "13", open: false }, 
-              { num: "14", open: false },
-              { num: "15", open: false },
-              { num: "16", open: false },
-              { num: "17", open: false },
-              { num: "18", open: false }]
-  };
+  constructor(){
+    super();
+    this.state = {
+      chapters: [],
+      settings: [{ num: "1", open: false },
+                { num: "2", open: false },
+                { num: "3", open: false }, 
+                { num: "4", open: false }, 
+                { num: "5", open: false }, 
+                { num: "6", open: false }, 
+                { num: "7", open: false },
+                { num: "8", open: false }, 
+                { num: "9", open: false }, 
+                { num: "10", open: false }, 
+                { num: "11", open: false },
+                { num: "12", open: false }, 
+                { num: "13", open: false }, 
+                { num: "14", open: false },
+                { num: "15", open: false },
+                { num: "16", open: false },
+                { num: "17", open: false },
+                { num: "18", open: false }]
+    };
+  }
+  
   handleClick = num => {
     this.setState(state => ({
       ...state,
@@ -40,20 +44,18 @@ class App extends Component {
     }));
     
   };
-  componentDidMount() {
-    fetch('https://public-data-json.s3.ap-south-1.amazonaws.com/gita.json', {
+
+  async componentDidMount() {
+    //https://public-data-json.s3.ap-south-1.amazonaws.com/gita.json
+    //http://localhost:3000/gita.json
+    const response = await fetch('https://public-data-json.s3.ap-south-1.amazonaws.com/gita.json', {
       headers : { 
         'Content-Type': 'application/json',
         'Accept': 'application/json'
        }
-    })
-    .then(res => res.json())
-    .then((data) => {
-      this.setState({ 
-        chapters: data,
-      })
-    })
-    .catch(console.log)
+    });
+    const json = await response.json()
+    this.setState({chapters: json});
   }
   
   render() {
