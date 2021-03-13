@@ -51,7 +51,7 @@ class App extends Component {
     const response = await fetch('https://public-data-json.s3.ap-south-1.amazonaws.com/gita.json', {
       headers : { 
         'Content-Type': 'application/json',
-        'Accept': 'application/json'
+        'Accept': 'application/json',
        }
     });
     const json = await response.json()
@@ -64,7 +64,7 @@ class App extends Component {
       // Your JSX code goes here.
       <div className="container">
         <div className="col-xs-12">
-        <h1>Bhagawad Gita</h1>
+        <h1>भगवद्गीता : Bhagavad Gita</h1>
       
         <List component="nav">
         {this.state.chapters.map(each => (
